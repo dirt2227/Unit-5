@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 //colors
 color red = #d62828;
 color blue = #3a86ff;
@@ -12,8 +14,17 @@ float ax, ay; // ball's garvity
 
 boolean akey, dkey, wkey, skey, upkey, downkey, rightkey, leftkey;
 
+float circle1x, circle1y, circle1d;
+float circle2x, circle2y, circle2d;
+
+int p1score, p2score;
+
+SoundFile success;
+
 void setup()  {
   size(800, 400, P2D);
+  
+  success = new SoundFile(this, "SUCCESS.wav");
   
   player1x = width/6;
   player1y = height/2;
@@ -30,6 +41,17 @@ void setup()  {
   vx = 2;
   vy = 3;
   
+  circle1x = width - 860;
+  circle1y = height/2;
+  circle1d = 200;
+  
+  circle2x = width + 60;
+  circle2y = height/2;
+  circle2d = 200;
+  
+  p1score = 0;
+  p2score = 0;
+  
 }
 
 void draw()  {
@@ -39,16 +61,23 @@ void draw()  {
   fill(255);
   circle(400, 200, 150);
   
- circle1(850, 200, 200);
-  circle2(-50, 200, 200);
+  circle(circle1x, circle1y, circle1d);
+  circle(circle2x, circle2y, circle2d);
   
-  rect(360, 20, 80, 40);
-  strokeWeight(2);
-  line(400, 20, 400, 60);
   
   strokeWeight(3);
   fill(red);
   circle(player1x, player1y, player1d);
+  
+  textSize(40);
+  textAlign(CENTER, CENTER);
+  fill(0);
+  text(p1score, player1x, player1y);
+  
+  textSize(40);
+  textAlign(CENTER, CENTER);
+  fill(0);
+  text(p2score, player2x, player2y);
 
   
   fill(blue);
@@ -76,22 +105,22 @@ void draw()  {
    if (downkey) player2y += 10;
    
    if(bally<= 0)  {
-    vy = vy * -0.9;
+    vy = vy * -0.5;
     bally = 0;
    }
    
    if(bally>= height)  {
-    vy = vy * -0.9;
+    vy = vy * -0.5;
     bally = height;
    }
    
    if(ballx<= 0)  {
-    vx = vx * -0.9;
+    vx = vx * -0.5;
     ballx = 0;
    }
    
    if(ballx >= width)  {
-    vx = vx * -0.9;
+    vx = vx * -0.5;
     ballx = width;
    }
     //movement
@@ -104,6 +133,22 @@ void draw()  {
    vx = (ballx - player2x)/5;
    vy = (bally - player2y)/5;
    }
+  
+  if(dist(ballx, bally, circle1x, circle1y) <= circle1d/2 + balld/2) { 
+   p2score = p2score + 1;
+   ballx = width/2;
+   bally = 200;
+   success.stop();
+   success.play();
+  }
+  
+  if(dist(ballx, bally, circle2x, circle2y) <= circle2d/2 + balld/2) { 
+   p1score = p1score + 1;
+   ballx = width/2;
+   bally = 200;
+   success.stop();
+   success.play();
+  }
   
    
 }
@@ -134,12 +179,4 @@ void keyReleased() {
   if (keyCode == UP) upkey = false;
   if (keyCode == DOWN) downkey = false;
   
-}
-
-void circle1(int x, int y, int d)  {
-   circle(x, y, d);
-}
-
-void circle2(int x, int y, int d)  {
-   circle(x, y, d);
 }
