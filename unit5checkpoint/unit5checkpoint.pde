@@ -1,5 +1,25 @@
 import processing.sound.*;
 
+//mode framework
+int mode;
+
+final int INTRO = 0;
+final int GAME = 1;
+final int PAUSE = 2;
+final int GAMEOVER = 3;
+
+
+
+
+
+
+
+
+
+
+
+
+
 //colors
 color red = #d62828;
 color blue = #3a86ff;
@@ -52,105 +72,21 @@ void setup()  {
   p1score = 0;
   p2score = 0;
   
+  mode = INTRO;
+  
 }
 
 void draw()  {
-  background(255);
-  strokeWeight(7);
-  line(400, 0 , 400, 400);
-  fill(255);
-  circle(400, 200, 150);
-  
-  circle(circle1x, circle1y, circle1d);
-  circle(circle2x, circle2y, circle2d);
-  
-  
-  strokeWeight(3);
-  fill(red);
-  circle(player1x, player1y, player1d);
-  
-  textSize(40);
-  textAlign(CENTER, CENTER);
-  fill(0);
-  text(p1score, player1x, player1y);
-  
-  textSize(40);
-  textAlign(CENTER, CENTER);
-  fill(0);
-  text(p2score, player2x, player2y);
+  if (mode == INTRO) {
+    intro();
+  } else if (mode == GAME) {
+    game();
+  } else if (mode == GAMEOVER) {
+    gameOver();
+} else{
+  println("ERROR! Mode is " + mode);
+}
 
-  
-  fill(blue);
-   circle(player2x, player2y, player2d);
-   
-   
-   
-   //ball
-   fill(0);
-   circle(ballx, bally, balld);
-   
- 
-   //bouncing code
-   ballx = ballx + vx;
-   bally = bally + vy;
-   
-   if (akey) player1x -= 10;
-  if (dkey) player1x += 10;
-  if (wkey) player1y -= 10;
-  if (skey) player1y += 10;
-  
-  if (rightkey) player2x += 10;
-   if (leftkey) player2x -= 10;
-   if (upkey) player2y -= 10;
-   if (downkey) player2y += 10;
-   
-   if(bally<= 0)  {
-    vy = vy * -0.5;
-    bally = 0;
-   }
-   
-   if(bally>= height)  {
-    vy = vy * -0.5;
-    bally = height;
-   }
-   
-   if(ballx<= 0)  {
-    vx = vx * -0.5;
-    ballx = 0;
-   }
-   
-   if(ballx >= width)  {
-    vx = vx * -0.5;
-    ballx = width;
-   }
-    //movement
-   if(dist(player1x, player1y, ballx, bally) <= player1d/2 + balld/2)  {
-      vx = (ballx - player1x)/5;
-   vy = (bally - player1y)/5;
-   }
-
-   if(dist(player2x, player2y, ballx, bally) <= player2d/2 + balld/2) { 
-   vx = (ballx - player2x)/5;
-   vy = (bally - player2y)/5;
-   }
-  
-  if(dist(ballx, bally, circle1x, circle1y) <= circle1d/2 + balld/2) { 
-   p2score = p2score + 1;
-   ballx = width/2;
-   bally = 200;
-   success.stop();
-   success.play();
-  }
-  
-  if(dist(ballx, bally, circle2x, circle2y) <= circle2d/2 + balld/2) { 
-   p1score = p1score + 1;
-   ballx = width/2;
-   bally = 200;
-   success.stop();
-   success.play();
-  }
-  
-   
 }
 
 void keyPressed() {
@@ -179,4 +115,12 @@ void keyReleased() {
   if (keyCode == UP) upkey = false;
   if (keyCode == DOWN) downkey = false;
   
+}
+
+void mouseReleased()  {
+ mode = mode + 1; 
+ 
+ if (mouseX > 340 && mouseX < 480 && mouseY > 250 && mouseY < 300) {
+ mode = 1;
+ }
 }
