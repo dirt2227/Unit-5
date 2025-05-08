@@ -8,18 +8,6 @@ final int GAME = 1;
 final int PAUSE = 2;
 final int GAMEOVER = 3;
 
-
-
-
-
-
-
-
-
-
-
-
-
 //colors
 color red = #d62828;
 color blue = #3a86ff;

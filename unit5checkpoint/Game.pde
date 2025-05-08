@@ -99,4 +99,11 @@ void game()  {
    player1y = constrain(player1y, 0, height);
    player2x = constrain(player2x, 400, width);
    player2y = constrain(player2y, 0, height);
+   
+   if(p1score == 5) {
+     mode = 3;
+   } else if (p2score == 5) {
+     mode = 3;
+   }
+   
 }
