@@ -1,7 +1,7 @@
 void game()  {
-  background(255);
+  background(yellow);
   strokeWeight(7);
-  stroke(0);
+  stroke(dyellow);
   line(400, 0 , 400, 400);
   fill(255);
   circle(400, 200, 150);
@@ -11,27 +11,27 @@ void game()  {
   
   
   strokeWeight(3);
-  fill(red);
+  fill(pink);
   circle(player1x, player1y, player1d);
   
   textSize(40);
   textAlign(CENTER, CENTER);
-  fill(red);
+  fill(pink);
   text(p1score, width/6, height/10);
   
   textSize(40);
   textAlign(CENTER, CENTER);
-  fill(blue);
+  fill(green);
   text(p2score, width - 133, height/10);
 
   
-  fill(blue);
+  fill(green);
    circle(player2x, player2y, player2d);
    
    
    
    //ball
-   fill(0);
+   fill(brown);
    circle(ballx, bally, balld);
    
  
@@ -72,11 +72,15 @@ void game()  {
    if(dist(player1x, player1y, ballx, bally) <= player1d/2 + balld/2)  {
       vx = (ballx - player1x)/10;
    vy = (bally - player1y)/10;
+   blip.stop();
+   blip.play();
    }
 
    if(dist(player2x, player2y, ballx, bally) <= player2d/2 + balld/2) { 
    vx = (ballx - player2x)/10;
    vy = (bally - player2y)/10;
+   blip.stop();
+   blip.play();
    }
   
   if(dist(ballx, bally, circle1x, circle1y) <= circle1d/2 + balld/2) { 
@@ -100,10 +104,18 @@ void game()  {
    player2x = constrain(player2x, 400, width);
    player2y = constrain(player2y, 0, height);
    
-   if(p1score == 5) {
-     mode = 3;
-   } else if (p2score == 5) {
-     mode = 3;
-   }
+   
+   textSize(70);
+  textAlign(CENTER, CENTER);
+  fill(pink);
+    if( p1score == 5) {
+      mode = 3;
+  text("GAME OVER      RED WINS", width/2, height/2);
+
+    } else if (p2score == 5) {
+      fill(green);
+      mode = 3;
+      text("GAME OVER      BLUE WINS", width/2, height/2);
+    }
    
 }

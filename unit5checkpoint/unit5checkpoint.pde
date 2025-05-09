@@ -9,8 +9,12 @@ final int PAUSE = 2;
 final int GAMEOVER = 3;
 
 //colors
-color red = #d62828;
-color blue = #3a86ff;
+color pink = #ffcad4;
+color green = #d8e2dc;
+color dgreen = #a5a58d;
+color yellow = #ffe5d9;
+color dyellow = #f6bd60;
+color brown = #cb997e;
 
 
 float player1x, player1y, player1d;
@@ -28,11 +32,13 @@ float circle2x, circle2y, circle2d;
 int p1score, p2score;
 
 SoundFile success;
+SoundFile blip;
 
 void setup()  {
   size(800, 400, P2D);
   
   success = new SoundFile(this, "SUCCESS.wav");
+  blip = new SoundFile(this, "blip.mp3");
   
   player1x = width/6;
   player1y = height/2;
@@ -106,7 +112,6 @@ void keyReleased() {
 }
 
 void mouseReleased()  {
- mode = mode + 1; 
  
  if (mouseX > 340 && mouseX < 480 && mouseY > 250 && mouseY < 300) {
  mode = 1;
