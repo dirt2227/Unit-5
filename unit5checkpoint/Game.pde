@@ -1,9 +1,11 @@
+
+
 void game()  {
   background(yellow);
   strokeWeight(7);
   stroke(dyellow);
   line(400, 0 , 400, 400);
-  fill(255);
+  fill(yellow);
   circle(400, 200, 150);
   
   circle(circle1x, circle1y, circle1d);
@@ -12,26 +14,29 @@ void game()  {
   
   strokeWeight(3);
   fill(pink);
+  stroke(dpink);
   circle(player1x, player1y, player1d);
   
   textSize(40);
   textAlign(CENTER, CENTER);
-  fill(pink);
+  fill(dpink);
   text(p1score, width/6, height/10);
   
   textSize(40);
   textAlign(CENTER, CENTER);
-  fill(green);
+  fill(dgreen);
   text(p2score, width - 133, height/10);
 
   
   fill(green);
+  stroke(dgreen);
    circle(player2x, player2y, player2d);
    
    
    
    //ball
    fill(brown);
+   stroke(dbrown);
    circle(ballx, bally, balld);
    
  
@@ -117,5 +122,24 @@ void game()  {
       mode = 3;
       text("GAME OVER      BLUE WINS", width/2, height/2);
     }
+    
+     tactiler(0, 0, 120, 50);
+  strokeWeight(5);
+  rect(0, 0, 120, 50);
+  
+  textSize(30);
+  textAlign(CENTER, CENTER);
+  fill(dbrown);
+  text("PAUSE", 60, 25);
+  
+}
+  void tactiler(int x, int y, int w, int h)  {
+ if (mouseX > x && mouseX < x + w &&
+    mouseY > y && mouseY < y + h) {
+    stroke(brown);
+  } else 
+  {
+  stroke(dbrown) ;
+}
    
 }

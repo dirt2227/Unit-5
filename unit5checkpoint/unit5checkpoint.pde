@@ -10,11 +10,13 @@ final int GAMEOVER = 3;
 
 //colors
 color pink = #ffcad4;
+color dpink = #ffafcc;
 color green = #d8e2dc;
 color dgreen = #a5a58d;
 color yellow = #ffe5d9;
 color dyellow = #f6bd60;
 color brown = #cb997e;
+color dbrown = #9c6644;
 
 
 float player1x, player1y, player1d;
@@ -33,12 +35,14 @@ int p1score, p2score;
 
 SoundFile success;
 SoundFile blip;
+SoundFile game;
 
 void setup()  {
   size(800, 400, P2D);
   
   success = new SoundFile(this, "SUCCESS.wav");
   blip = new SoundFile(this, "blip.mp3");
+  game = new SoundFile(this, "game.mp3");
   
   player1x = width/6;
   player1y = height/2;
@@ -67,6 +71,9 @@ void setup()  {
   p2score = 0;
   
   mode = INTRO;
+  
+  game.loop();
+  game.amp(0.10);
   
 }
 
@@ -115,5 +122,16 @@ void mouseReleased()  {
  
  if (mouseX > 340 && mouseX < 480 && mouseY > 250 && mouseY < 300) {
  mode = 1;
- }
+   
+ } 
+ 
+ if (mouseX > 0 && mouseX < 120 && mouseY > 0 && mouseY < 50)  {
+    mode = 2;
+    textSize(200);
+  textAlign(CENTER, CENTER);
+  fill(dbrown);
+  text("PAUSED", 400, 200);
+  }else
+ mode = 1;
+
 }

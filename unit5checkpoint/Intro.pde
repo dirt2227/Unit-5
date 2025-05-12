@@ -11,17 +11,17 @@ textSize(100);
   
   textSize(50);
   textAlign(CENTER, CENTER);
-  fill(0);
+  fill(dbrown);
   text("PLAY", 400, 270);
   
 }
   void tactile(int x, int y, int w, int h)  {
  if (mouseX > x && mouseX < x + w &&
     mouseY > y && mouseY < y + h) {
-    stroke(pink);
+    stroke(brown);
   } else 
   {
-  stroke(0) ;
+  stroke(dbrown) ;
 }
   }
   
