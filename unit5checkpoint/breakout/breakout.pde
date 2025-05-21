@@ -1,9 +1,17 @@
+//arrays
+int n;
+int brickd;
+boolean [] alive;
+
+int tempx, tempy;
+
 //font
 PFont font;
 
 color navy = #264653;
 color green = #2a9d8f;
 color yellow = #e9c46a;
+color lyellow = #ECD089;
 color lorange = #f4a261;
 color orange = #e76f51;
 
@@ -17,6 +25,9 @@ final int GAMEOVER = 4;
 //game entities
 float bx, by, bd, vx, vy, px, py, pd;
 
+//score
+int score;
+
 //keyboard variables
 boolean akey, dkey;
 
@@ -29,6 +40,7 @@ size(800, 800);
 font =  createFont ("AgencyFB-Bold-120",120);
 textFont(font);
 text("BREAKOUT", 50, 200);
+
 
 mode = 2;
 
@@ -44,18 +56,31 @@ pd = 120;
 vx = 0;
 vy = 1;
 
-//arrays
-x = new int [3];
-y = new int [3];
+//brick array
+brickd= 50;
+n = 120;
 
-x[0] = 100;
-y[0] = 100;
+x = new int [n];
+y = new int [n];
+alive = new boolean[n];
 
-x[1] = 400;
-y[1] = 100;
+tempx = 50;
+tempy = 50;
 
-x[2] = 700;
-y[2] = 100;
+int a = 0;
+while (a < n)  {
+  x[a] = tempx;
+  y[a] = tempy;
+  alive[a] = true;
+  tempx = tempx + 50;
+  if (tempx == width)  {
+    tempx = 50;
+   tempy = tempy + 50; 
+  }
+  a = a + 1;
+}
+
+
 }
 
 void draw()  {
