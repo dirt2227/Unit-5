@@ -27,6 +27,7 @@ float bx, by, bd, vx, vy, px, py, pd;
 
 //score
 int score;
+int lives;
 
 //keyboard variables
 boolean akey, dkey;
@@ -40,6 +41,8 @@ size(800, 800);
 font =  createFont ("AgencyFB-Bold-120",120);
 textFont(font);
 text("BREAKOUT", 50, 200);
+
+lives = 3;
 
 
 mode = 2;

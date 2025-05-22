@@ -1,5 +1,18 @@
 void game() {
   background(navy);
+  
+   px = constrain(px, 0, width);
+  
+  textSize(40);
+  textAlign(CENTER, CENTER);
+  fill(yellow);
+  text(score, width/2, height/2 + 100);
+  
+  textSize(40);
+  textAlign(CENTER, CENTER);
+  fill(yellow);
+  text(lives, width/2 + 60, height/2 + 300);
+  text("Lives: ", width/2 - 10, height/2 + 300);
 
   //bricks
   int a = 0;
@@ -28,12 +41,27 @@ void game() {
   }
 
   if (by < bd/2 || by > height - bd/2) {
+    lives = lives - 1;
     vy = vy * -1;
+    bx = width/2;
+    by = height - 200;
+    vx = 0;
+    vy = 1;
   }
 
   if (bx < bd/2 || bx > width - bd/2) {
     vx = vx * -1;
   }
+  
+if ( score == 1) {
+    mode = 4;
+    text("GAME OVER      YOU WIN", width/2, height/2);
+  } else if (lives == 0) {
+    fill(orange);
+    mode = 4;
+    text("GAME OVER      YOU LOSE", width/2, height/2);
+  }
+  
 }
 
 
@@ -51,6 +79,7 @@ void managebrick  (int a) {
 
   circle(x[a], y[a], brickd);
   if (dist(bx, by, x[a], y[a]) < bd/2 + brickd/2) {
+     score = score + 1;
     vx = (bx - x[a])/5;
     vy = (by - y[a])/5;
     alive[a] = false;
