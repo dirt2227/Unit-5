@@ -1,17 +1,27 @@
-void mouseReleased()  {
- 
- if (mouseX > 340 && mouseX < 480 && mouseY > 250 && mouseY < 300) {
- mode = GAME;
-   
- } 
- 
- if (mouseX > 0 && mouseX < 120 && mouseY > 0 && mouseY < 50)  {
-    mode = 2;
-    textSize(200);
-  textAlign(CENTER, CENTER);
-  fill(yellow);
-  text("PAUSED", 400, 200);
-  }else
- mode = 1;
+void mouseReleased() {
 
+  if (mouseX > 325 && mouseX < 445 && mouseY > 400 && mouseY < 450) {
+    mode = GAME;
+  }
+
+  if (mouseX > 250 && mouseX < 520 && mouseY > 400 && mouseY < 450) {
+    mode = GAME;
+    score = 0;
+    lives = 3;
+    bx = width/2;
+    by = height - 200;
+    vx = 0;
+    vy = 1;
+    px = width/2;
+    py = height;
+    brickarray();
+  }
+
+  if (mouseX > 10 && mouseX < 50 && mouseY > 740 && mouseY < 765) {
+    mode = PAUSE;
+    textSize(200);
+    text("PAUSED", 400, 600);
+  } else {
+    mode = GAME;
+  }
 }
