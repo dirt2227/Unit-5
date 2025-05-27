@@ -48,7 +48,7 @@ void setup() {
   textFont(font);
   text("BREAKOUT", 50, 200);
 
-  lives = 3;
+  lives = 8;
   mode = 1;
 
   blip = new SoundFile(this, "blip.mp3");
@@ -71,7 +71,7 @@ void setup() {
   brickarray();
 
   game.loop();
-  game.amp(0.10);
+  
 }
 
 void draw() {

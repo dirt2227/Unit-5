@@ -85,5 +85,6 @@ void managebrick  (int a) {
     alive[a] = false;
     blip.stop();
     blip.play();
+    blip.amp(0.5);
   }
 }

@@ -7,7 +7,7 @@ void mouseReleased() {
   if (mouseX > 250 && mouseX < 520 && mouseY > 400 && mouseY < 450) {
     mode = GAME;
     score = 0;
-    lives = 3;
+    lives = 8;
     bx = width/2;
     by = height - 200;
     vx = 0;
