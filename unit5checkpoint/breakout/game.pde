@@ -1,6 +1,10 @@
 void game() {
   background(navy);
-
+  
+  image(gif[f], 0, 0, width, height);
+  f = f + 1;
+  if ( f == numberofframes) f = 0;
+ 
   px = constrain(px, 0, width);
 
   textSize(40);
@@ -87,4 +91,9 @@ void managebrick  (int a) {
     blip.play();
     blip.amp(0.5);
   }
+  
+  
+  
+  
+  
 }

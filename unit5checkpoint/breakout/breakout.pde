@@ -25,6 +25,10 @@ final int GAME = 2;
 final int PAUSE = 3;
 final int GAMEOVER = 4;
 
+PImage [] gif;
+int numberofframes;
+int f;
+
 //game entities
 float bx, by, bd, vx, vy, px, py, pd;
 
@@ -44,6 +48,16 @@ SoundFile game;
 
 void setup() {
   size(800, 800);
+  
+  numberofframes = 29;
+  gif = new PImage  [numberofframes];
+  
+ int i = 0;
+ while (i < numberofframes) { // 29
+ gif[i] = loadImage("frame_" + i + "_delay-0.15s.gif");
+   i++;
+ }
+ 
   font =  createFont ("Agency FB Bold", 120);
   textFont(font);
   text("BREAKOUT", 50, 200);

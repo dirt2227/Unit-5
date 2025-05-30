@@ -5,6 +5,8 @@ void gameover() {
   fill(yellow);
   if ( score == 120) {
     text("GAME OVER   YOU WIN", width/2, height/3);
+    text("WOWWWWWWWW!!!!!!", width/2, height/4);
+    text(":DDDDDD", width/2, height/2 - 50);
   } else if (lives == 0) {
     fill(orange);
     text("GAME OVER   YOU LOSE", width/2, height/3);
